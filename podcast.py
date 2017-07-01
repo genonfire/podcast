@@ -54,8 +54,10 @@ def newsfactory():
     # ITEM
     weekday = timezone.now().weekday()
 
-    for w in reversed(range(1, weekday + 1)):
+    for w in reversed(range(0, weekday + 1)):
         for i in reversed(range(1, 3)):
+            if w >= 5:
+                continue
             fordate = timezone.now() - timezone.timedelta(days=(weekday - w))
             putdate = fordate.replace(hour=0, minute=30, second=0, microsecond=0)
 
